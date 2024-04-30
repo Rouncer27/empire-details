@@ -43,8 +43,8 @@
   &-quote {
     width: 100%;
     position: absolute;
-    bottom: 13rem;
-    right: 5rem;
+    bottom: 12rem;
+    right: 15rem;
     z-index: 10;
     text-align: right;
     transform-origin: center center;
@@ -79,5 +79,38 @@
       $whiteColor 100%
     );
     z-index: 5;
+
+    &-dot-one {
+      position: absolute;
+      top: -10rem;
+      right: 25%;
+      width: 23rem;
+      height: 23rem;
+      border-radius: 50%;
+      background-color: $primaryColor;
+      z-index: 1;
+    }
+
+    &-dot-two {
+      position: absolute;
+      top: 5rem;
+      left: 29%;
+      width: 23rem;
+      height: 23rem;
+      border-radius: 50%;
+      background-color: $primaryColor;
+      z-index: 1;
+    }
+
+    &-dot-three {
+      position: absolute;
+      top: 50%;
+      left: -3rem;
+      width: 23rem;
+      height: 23rem;
+      border-radius: 50%;
+      background-color: $primaryColor;
+      z-index: 1;
+    }
   }
 }
