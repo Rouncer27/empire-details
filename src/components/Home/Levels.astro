@@ -1,8 +1,51 @@
 ---
+import Wrapper from "../shared/Wrapper.astro";
 import "./levels.scss";
-// console.log("LEVELS: ", Astro.props.data);
+import Button from "../shared/Button.astro";
+import Headline from "../shared/Headline.astro";
+import { Image } from "astro:assets";
+console.log("LEVELS: ", Astro.props.data);
 ---
 
-<div>
-  <h1>Levels</h1>
+<div class="levels">
+  <Wrapper>
+    {
+      Astro.props.data.levels.map((level, index) => {
+        const reversed = (index + 1) % 2 === 0;
+        console.log("reversed", reversed);
+        return (
+          <div class={`levels-item${reversed ? " levels-item-reversed" : ""}`}>
+            <div class="levels-item-content">
+              <div class="levels-item-content-title">
+                <Headline ele="h2" hlstyle="three">
+                  {level.levelsTitle}
+                </Headline>
+                <Headline ele="p" hlstyle="four">
+                  {level.levelBoldText}
+                </Headline>
+              </div>
+              <div
+                class="levels-item-content-paragraphs"
+                set:html={level.levelContent}
+              />
+              <div class="levels-item-content-link">
+                <Button href={level.levelButtonLink.nodes[0].uri}>
+                  {level.levelButtonText}
+                </Button>
+              </div>
+            </div>
+            <div class="levels-item-image">
+              <div>
+                <Image
+                  src={level.levelImage.node.sourceUrl}
+                  alt={level.levelImage.node.altText}
+                  inferSize={true}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
 </div>

@@ -1,0 +1,67 @@
+@use "../../styles/abstracts/" as *;
+@use "../../styles/global/paragraphs";
+
+.levels {
+  &-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 5rem;
+
+    &-content {
+      width: calc(50% - 2rem);
+      margin: 0 1rem;
+
+      &-title {
+        h2 {
+          color: $shadowColor;
+        }
+
+        p {
+          font-weight: bold;
+          margin-bottom: 4rem;
+        }
+      }
+
+      &-paragraphs {
+        margin-bottom: 3rem;
+
+        p {
+          @extend .p-one;
+        }
+      }
+
+      &-link {
+        a {
+          background-color: $shadowColor;
+        }
+      }
+    }
+
+    &-image {
+      width: calc(50% - 2rem);
+      margin: 0 1rem;
+    }
+
+    &-reversed {
+      flex-direction: row-reverse;
+
+      .levels-item-content-title {
+        h2 {
+          color: $secondaryColor;
+        }
+      }
+
+      .levels-item-content-link {
+        a {
+          background-color: $secondaryColor;
+
+          &:hover {
+            background-color: $primaryColor;
+          }
+        }
+      }
+    }
+  }
+}
