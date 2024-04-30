@@ -1,23 +1,85 @@
 ---
-import Headline from '../components/shared/Headline.astro';
-import Paragraph from '../components/shared/Paragraph.astro';
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/shared/Button.astro';
+import Layout from "../layouts/Layout.astro";
+import IntroHero from "../components/Home/IntroHero.astro";
+import Levels from "../components/Home/Levels.astro";
+import About from "../components/Home/About.astro";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query homePageQuery {
+				page(id: "/", idType: URI) {
+					homePage {
+						
+						# START Hero section #
+						heroIntroComponent {
+							mainContent
+							mainQuote
+							mainTitle
+							heroImage {
+							  node {
+								  altText
+								  sourceUrl
+							  }
+							}
+						}
+            # END Hero section #
+            # START Levels Components #
+            levelsComponent {
+              levels {
+                levelsTitle
+                levelBoldText
+                levelContent
+                levelButtonText
+                levelButtonLink {
+                  nodes {
+                    uri
+                  }
+                }
+                levelImage {
+                  node {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+            }
+            # END Levels Components #
+            # START About Components #
+            aboutComponent {
+              aboutQuote
+              aboutTitle
+              aboutContent
+              aboutEndQuote
+              aboutImage {
+                node {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+            # END About Components #
+             
+					}
+				}
+			}
+		`,
+  }),
+});
+
+const {
+  data: { page },
+} = await response.json();
+
+console.log("page", page);
 ---
 
 <Layout title="Welcome to Astro.">
-	<h1>Home Page</h1>
-	<h2>Home Page</h2>
-	<h3>Home Page</h3>
-	<h4>Home Page</h4>
-	<h5>Home Page</h5>
-	<h6>Home Page</h6>
-	<Headline>Aliquam tincidunt mauris eu risus.</Headline>
-	<Headline hlstyle="two">Aliquam tincidunt mauris eu risus.</Headline>
-	<Headline hlstyle="three">Aliquam tincidunt mauris eu risus.</Headline>
-	<Headline hlstyle="four">Aliquam tincidunt mauris eu risus.</Headline>
-	<Paragraph>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit posuere a pede.</Paragraph>
-	<Paragraph pstyle="two">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit posuere a pede.</Paragraph>
-	<Button>Click Me!</Button>
+  <IntroHero data={page.homePage.heroIntroComponent} />
+  <Levels data={page.homePage.levelsComponent} />
+  <About data={page.homePage.aboutComponent} />
 </Layout>
-
