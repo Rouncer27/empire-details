@@ -1,9 +1,17 @@
 ---
-interface Props {
-	title: string;
-}
+import "../styles/styles.scss";
+import { baseData } from "../data/siteData";
 
-const { title } = Astro.props;
+const {
+  metaImg = null,
+  metaTitle = null,
+  metaDescription = null,
+} = Astro.props;
+
+const title = metaTitle ? metaTitle : baseData.title;
+const description = metaDescription ? metaDescription : baseData.description;
+const imgSrc = metaImg ? metaImg : baseData.siteImg;
+const baseUrl = Astro.url ? Astro.url : baseData.url;
 ---
 
 <!doctype html>
@@ -20,32 +28,3 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
