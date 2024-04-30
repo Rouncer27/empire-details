@@ -13,32 +13,32 @@
 
 .hl-one {
   @extend .headline-all;
-  @include utils.font-sizer(5, 8, 76.8, 150, 5);
+  @include utils.font-sizer(3, 4.9, 76.8, 150, 3);
+  font-family: abstracts.$secondaryFont;
+  line-height: 1.31;
 }
 
 .hl-two {
   @extend .headline-all;
-  @include utils.font-sizer(3.2, 5, 76.8, 150, 3.2);
+  @include utils.font-sizer(2.6, 3, 76.8, 150, 2.6);
+  line-height: 1.17;
 }
 
 .hl-three {
-  @include utils.font-sizer(2.8, 3.5, 76.8, 150, 2.8);
+  @include utils.font-sizer(2.8, 3.2, 76.8, 150, 2.8);
   @extend .headline-all;
+  font-family: abstracts.$secondaryFont;
+  line-height: 1.56;
 }
 
 .hl-four {
-  @include utils.font-sizer(2.8, 3.6, 76.8, 160, 2.8);
+  @include utils.font-sizer(2.2, 2.7, 76.8, 160, 2.2);
   @extend .headline-all;
+  line-height: 1.56;
 }
 
 .hl-five {
-  @include utils.font-sizer(1.6, 1.8, 76.8, 150, 1.6);
+  @include utils.font-sizer(2.2, 2.7, 76.8, 160, 2.2);
   @extend .headline-all;
-  font-family: abstracts.$secondaryFont;
-  line-height: 1.27;
-  color: abstracts.$blackColor;
-}
-
-.hl-white {
-  color: abstracts.$whiteColor;
+  line-height: 1.33;
 }

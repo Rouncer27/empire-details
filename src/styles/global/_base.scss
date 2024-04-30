@@ -25,8 +25,6 @@ body {
   letter-spacing: 0.1rem;
   line-height: 1.5;
   overflow-x: hidden;
-  color: var.$whiteColor;
-  background-color: var.$blackColor;
 }
 
 h1,
@@ -45,27 +43,27 @@ h6 {
 }
 
 h1 {
-  @include utils.font-sizer(3.2, 5.6, 76.8, 120);
+  @include utils.font-sizer(3, 4.9, 76.8, 150, 3);
 }
 
 h2 {
-  @include utils.font-sizer(2.6, 4.6, 76.8, 120);
+  @include utils.font-sizer(2.6, 3, 76.8, 150, 2.6);
 }
 
 h3 {
-  @include utils.font-sizer(2.2, 3.4, 76.8, 120);
+  @include utils.font-sizer(2.8, 3.2, 76.8, 150, 2.8);
 }
 
 h4 {
-  @include utils.font-sizer(2, 2.8, 76.8, 120);
+  @include utils.font-sizer(2.2, 2.7, 76.8, 160, 2.2);
 }
 
 h5 {
-  @include utils.font-sizer(2, 2.4, 76.8, 120);
+  @include utils.font-sizer(2.2, 2.7, 76.8, 160, 2.2);
 }
 
 h6 {
-  @include utils.font-sizer(1.8, 2.2, 76.8, 120);
+  @include utils.font-sizer(1.8, 2.2, 76.8, 160, 1.8);
 }
 
 p {

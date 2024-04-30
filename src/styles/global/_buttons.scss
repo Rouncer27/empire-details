@@ -2,10 +2,10 @@
 @use "../utils";
 
 .btn {
-  @include utils.font-sizer(1.4, 1.9, 76.8, 150, 1.8);
+  @include utils.font-sizer(1.4, 1.7, 76.8, 150, 1.8);
   position: relative;
   display: inline-block;
-  padding: 1.7rem 2.2rem;
+  padding: 1rem 2rem;
   transition: all 0.3s ease;
   border: none;
   background-color: $secondaryColor;
@@ -14,7 +14,7 @@
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1;
+  line-height: 1.35;
   letter-spacing: normal;
   text-align: center;
   text-transform: uppercase;
