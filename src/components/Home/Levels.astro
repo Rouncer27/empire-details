@@ -4,7 +4,7 @@ import "./levels.scss";
 import Button from "../shared/Button.astro";
 import Headline from "../shared/Headline.astro";
 import { Image } from "astro:assets";
-console.log("LEVELS: ", Astro.props.data);
+// console.log("LEVELS: ", Astro.props.data);
 ---
 
 <div class="levels">
@@ -12,7 +12,6 @@ console.log("LEVELS: ", Astro.props.data);
     {
       Astro.props.data.levels.map((level, index) => {
         const reversed = (index + 1) % 2 === 0;
-        console.log("reversed", reversed);
         return (
           <div class={`levels-item${reversed ? " levels-item-reversed" : ""}`}>
             <div class="levels-item-content">
