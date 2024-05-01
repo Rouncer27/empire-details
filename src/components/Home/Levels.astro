@@ -4,7 +4,6 @@ import "./levels.scss";
 import Button from "../shared/Button.astro";
 import Headline from "../shared/Headline.astro";
 import { Image } from "astro:assets";
-// console.log("LEVELS: ", Astro.props.data);
 ---
 
 <div class="levels">
@@ -28,7 +27,7 @@ import { Image } from "astro:assets";
                 set:html={level.levelContent}
               />
               <div class="levels-item-content-link">
-                <Button href={level.levelButtonLink.nodes[0].uri}>
+                <Button href={level.levelButtonLink.uri}>
                   {level.levelButtonText}
                 </Button>
               </div>
@@ -36,8 +35,8 @@ import { Image } from "astro:assets";
             <div class="levels-item-image">
               <div>
                 <Image
-                  src={level.levelImage.node.sourceUrl}
-                  alt={level.levelImage.node.altText}
+                  src={level.levelImage.sourceUrl}
+                  alt={level.levelImage.altText}
                   inferSize={true}
                 />
               </div>

@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../components/shared/Wrapper.astro";
+import "./footer.scss";
+import Button from "../components/shared/Button.astro";
+import Headline from "../components/shared/Headline.astro";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query footerQuery {
+                footerOptions {
+                    footerOptions {
+                    footerTopLogos {
+                        logo {
+                        altText
+                        sourceUrl
+                        }
+                    }
+                    footerBottomButtonLink
+                    footerBottomButtonText
+                    footerBottomEmail
+                    footerBottomFacebook
+                    footerBottomInstagram
+                    footerBottomPhone
+                    footerBottomTitle
+                    footerTopContent
+                    footerBottomImageAbout {
+                        altText
+                        sourceUrl
+                    }
+                    footerBottomImageHome {
+                        altText
+                        sourceUrl
+                        }
+                    }
+                } 
+            }
+        `,
+  }),
+});
+
+const {
+  data: {
+    footerOptions: { footerOptions },
+  },
+} = await response.json();
+---
+
+<footer class="footer">
+  <Wrapper>
+    <div class="footer-logos">
+      {
+        footerOptions.footerTopLogos.map((logo) => {
+          return (
+            <div class="footer-logos-logo">
+              <Image
+                src={logo.logo.sourceUrl}
+                alt={logo.logo.altText}
+                inferSize={true}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="footer-top-content" set:html={footerOptions.footerTopContent} />
+  </Wrapper>
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <div class="footer-bottom-content-title">
+        <Headline ele="h4" hlstyle="four"
+          >{footerOptions.footerBottomTitle}</Headline
+        >
+      </div>
+      <div class="footer-bottom-content-contact">
+        <p>
+          <a href={`mailto:${footerOptions.footerBottomEmail}`}
+            >{footerOptions.footerBottomEmail}</a
+          >
+        </p>
+        <p>
+          <a href={`tel:+1${footerOptions.footerBottomPhone}`}
+            >{footerOptions.footerBottomPhone}</a
+          >
+        </p>
+        <Button
+          class="footer-bottom-content-contact-link"
+          href={footerOptions.footerBottomButtonLink}
+          btnstyle="two">{footerOptions.footerBottomButtonText}</Button
+        >
+      </div>
+      <ul class="footer-bottom-content-social">
+        <li><a href={footerOptions.footerBottomFacebook}>Facebook</a></li>
+        <li><a href={footerOptions.footerBottomInstagram}>Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom-image">
+      <Image
+        src={footerOptions.footerBottomImageHome.sourceUrl}
+        alt={footerOptions.footerBottomImageHome.altText}
+        inferSize={true}
+      />
+    </div>
+  </div>
+  <div class="footer-bot-banner"></div>
+</footer>

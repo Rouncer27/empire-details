@@ -47,7 +47,7 @@
 
 .btn-two {
   @extend .btn;
-  background-color: $primaryColor;
+  background-color: $shadowColor;
 
   &:hover {
     background-color: $secondaryColor;
