@@ -2,11 +2,8 @@
 import { Image } from "astro:assets";
 import Wrapper from "../shared/Wrapper.astro";
 import Headline from "../shared/Headline.astro";
-import Paragraph from "../shared/Paragraph.astro";
 import "./services.scss";
 import Button from "../shared/Button.astro";
-
-// console.log(Astro.props.data)
 ---
 
 <div class="services">
@@ -14,9 +11,6 @@ import Button from "../shared/Button.astro";
     {
       Astro.props.data.servicesBlocks.map((block, index) => {
         const reversed = (index + 1) % 2 === 0;
-
-        console.log("reversed", reversed);
-
         return (
           <div class={`services-item${reversed ? " services-item-alt" : ""}`}>
             <div class="services-item-graphic">

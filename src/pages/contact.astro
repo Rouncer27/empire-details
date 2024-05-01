@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import IntroHero from "../components/Contact/IntroHero.astro";
 import Services from "../components/Contact/Services.astro";
+import Testimonial from "../components/Contact/Testimonial.astro";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -51,6 +52,17 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
               }
             }
             # END Services section #
+            # START Testimonial section #
+            testimonialGalleryComponent {
+              images {
+                image {
+                  altText
+                  sourceUrl
+                }
+              }
+              testimonial
+            }
+            # END Testimonial section #
              
 					}
 				}
@@ -69,4 +81,5 @@ const {
 <Layout>
   <IntroHero data={page.contactPage.heroIntroComponent} />
   <Services data={page.contactPage.services} />
+  <Testimonial data={page.contactPage.testimonialGalleryComponent} />
 </Layout>
