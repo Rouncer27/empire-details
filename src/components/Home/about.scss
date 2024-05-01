@@ -1,0 +1,126 @@
+@use "../../styles/global/headlines";
+@use "../../styles/global/paragraphs";
+@use "../../styles/abstracts/" as *;
+
+.about {
+  overflow: hidden;
+  &-quote {
+    position: relative;
+    width: 100%;
+
+    &-container {
+      max-width: 100rem;
+      margin: 2rem auto 0;
+      padding: 7.5rem 2rem 20rem;
+      position: relative;
+      z-index: 10;
+
+      p {
+        @extend .hl-one;
+        color: $whiteColor;
+      }
+    }
+
+    &-waves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: top center;
+      background-repeat: repeat-y;
+      background-size: 101%;
+      z-index: 1;
+    }
+
+    &-waves-light {
+      position: absolute;
+      top: -2rem;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: top center;
+      background-repeat: repeat-y;
+      background-size: 101%;
+      z-index: -1;
+    }
+  }
+
+  &-bio {
+    position: relative;
+    background: linear-gradient(
+      176deg,
+      transparent 0%,
+      transparent 10rem,
+      $secondaryColor 10rem
+    );
+    margin-top: -22.5rem;
+    padding-bottom: 35rem;
+    z-index: 10;
+
+    &-image {
+      width: calc(35%);
+    }
+
+    &-content {
+      width: calc(65% - 3rem);
+      margin-left: 3rem;
+      padding-top: 10rem;
+
+      &-title {
+        width: 100%;
+
+        h2 {
+          color: $whiteColor;
+        }
+      }
+
+      &-para {
+        width: 100%;
+
+        p {
+          @extend .p-two;
+          color: $whiteColor;
+        }
+      }
+    }
+  }
+
+  &-end-quote {
+    position: relative;
+    background: linear-gradient(
+      172deg,
+      transparent 0%,
+      transparent 20rem,
+      $whiteColor 20rem
+    );
+    z-index: 15;
+    margin-top: -25rem;
+
+    &-wrap {
+      position: relative;
+      padding: 14rem 0 5rem;
+      z-index: 15;
+      p {
+        width: 100%;
+        color: $primaryColor;
+        text-align: center;
+        transform: rotate(-8deg);
+      }
+    }
+
+    &-specs {
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 30rem;
+      transform: rotate(-0deg);
+      background-position: top center;
+      background-repeat: repeat-y;
+      background-size: cover;
+      z-index: 12;
+    }
+  }
+}

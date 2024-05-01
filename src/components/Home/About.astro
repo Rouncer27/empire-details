@@ -1,8 +1,61 @@
 ---
+import { Image } from "astro:assets";
+import Wrapper from "../shared/Wrapper.astro";
 import "./about.scss";
-// console.log("ABOUTS: ", Astro.props.data);
+import wavesSrc from "./assets/waves.png";
+import wavesLightSrc from "./assets/waves-light.png";
+import specsSrc from "./assets/specs.png";
+import Headline from "../shared/Headline.astro";
+const { aboutQuote, aboutImage, aboutTitle, aboutContent, aboutEndQuote } =
+  Astro.props.data;
 ---
 
-<div>
-  <h1>About</h1>
+<div class="about">
+  <div class="about-quote">
+    <div class="about-quote-container">
+      <p set:html={aboutQuote} />
+    </div>
+    <div
+      class="about-quote-waves"
+      style={`background-image: url(${wavesSrc.src})`}
+    >
+    </div>
+    <div
+      class="about-quote-waves-light"
+      style={`background-image: url(${wavesLightSrc.src})`}
+    >
+    </div>
+  </div>
+  <div class="about-bio">
+    <Wrapper>
+      <div class="about-bio-image">
+        <div>
+          <Image
+            src={aboutImage.node.sourceUrl}
+            alt={aboutImage.node.altText}
+            inferSize={true}
+          />
+        </div>
+      </div>
+      <div class="about-bio-content">
+        <div class="about-bio-content-title">
+          <Headline ele="h2">{aboutTitle}</Headline>
+        </div>
+        <div class="about-bio-content-para" set:html={aboutContent} />
+      </div>
+    </Wrapper>
+    <div class="about-bio-bg"></div>
+  </div>
+  <div class="about-end-quote">
+    <div class="about-end-quote-wrap">
+      <Wrapper>
+        <Headline ele="p" hlstyle="three">{aboutEndQuote}</Headline>
+      </Wrapper>
+    </div>
+    <div
+      class="about-end-quote-specs"
+      style={`background-image: url(${specsSrc.src})`}
+    >
+    </div>
+  </div>
 </div>
