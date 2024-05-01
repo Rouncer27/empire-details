@@ -1,0 +1,102 @@
+@use "../../styles/abstracts/" as *;
+@use "../../styles/global/paragraphs";
+
+.services {
+  &-item {
+    width: calc(50% - 6rem);
+    margin: 1rem 3rem;
+
+    &-graphic {
+      width: 16rem;
+    }
+
+    &-title {
+      width: 100%;
+
+      h2 {
+        color: $shadowColor;
+      }
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    &-details {
+      width: 100%;
+
+      p {
+        @extend .p-one;
+      }
+    }
+
+    &-pricing {
+      width: 100%;
+
+      ul {
+        width: 100%;
+
+        li {
+          @extend .p-two;
+          display: flex;
+          width: 100%;
+          padding: 1rem 2rem;
+          border-bottom: 0.25rem solid rgba(0, 0, 0, 0.5);
+
+          span {
+            width: calc(75%);
+          }
+
+          span:last-child {
+            width: calc(25%);
+            padding-left: 0rem;
+          }
+        }
+      }
+    }
+
+    &-addon {
+      width: 100%;
+      margin: 2.75rem auto;
+
+      ul {
+        width: 100%;
+
+        li {
+          @extend .p-one;
+          position: relative;
+          width: 100%;
+          padding-left: 2.5rem;
+          padding-bottom: 1.5rem;
+          font-weight: bold;
+          color: $shadowColor;
+
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            content: "\2022";
+          }
+        }
+      }
+    }
+
+    &-button {
+      width: 100%;
+    }
+
+    &.services-item-alt {
+      .services-item-title {
+        h2 {
+          color: $secondaryColor;
+        }
+      }
+
+      .services-item-addon {
+        li {
+          color: $secondaryColor;
+        }
+      }
+    }
+  }
+}

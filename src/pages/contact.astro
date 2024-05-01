@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import IntroHero from "../components/Contact/IntroHero.astro";
+import Services from "../components/Contact/Services.astro";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -27,6 +28,29 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
               }
 						}
             # END Hero section #
+
+            # START Services section #
+            services {
+              servicesBlocks {
+                title
+                subTitle
+                details
+                graphic {
+                  altText
+                  sourceUrl
+                }
+                pricingItems {
+                  itemTitle
+                  itemPrice
+                }
+                buttonUrl
+                buttonText
+                addOns {
+                  addOnItem
+                }
+              }
+            }
+            # END Services section #
              
 					}
 				}
@@ -39,9 +63,10 @@ const {
   data: { page },
 } = await response.json();
 
-console.log("page", page);
+// console.log("page", page);
 ---
 
 <Layout>
   <IntroHero data={page.contactPage.heroIntroComponent} />
+  <Services data={page.contactPage.services} />
 </Layout>
