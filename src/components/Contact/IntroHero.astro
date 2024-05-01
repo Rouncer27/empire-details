@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../shared/Wrapper.astro";
+import Headline from "../shared/Headline.astro";
+import "./introHero.scss";
+---
+
+<div class="intro-hero">
+  <Wrapper>
+    <div class="intro-hero-image">
+      <div class="intro-hero-image-wrapper">
+        <Image
+          src={Astro.props.data.heroImage.sourceUrl}
+          alt={Astro.props.data.heroImage.altText}
+          inferSize={true}
+        />
+      </div>
+      <div class="intro-hero-image-graphic">
+        <Image
+          src={Astro.props.data.heroGraphic.sourceUrl}
+          alt={Astro.props.data.heroGraphic.altText}
+          inferSize={true}
+        />
+      </div>
+    </div>
+    <div class="intro-hero-content">
+      <div class="intro-hero-content-title">
+        <Headline>{Astro.props.data.mainTitle}</Headline>
+      </div>
+    </div>
+    <div class="intro-hero-quote">
+      <p set:html={Astro.props.data.mainQuote} />
+    </div>
+  </Wrapper>
+  <div class="intro-hero-bg">
+    <div class="intro-hero-bg-dot-one"></div>
+    <div class="intro-hero-bg-dot-two"></div>
+    <div class="intro-hero-bg-dot-three"></div>
+  </div>
+</div>

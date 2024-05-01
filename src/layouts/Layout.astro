@@ -1,5 +1,6 @@
 ---
 import "../styles/styles.scss";
+import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import { baseData } from "../data/siteData";
 
@@ -26,6 +27,7 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
     <title>{title}</title>
   </head>
   <body>
+    <Header />
     <slot />
     <Footer />
   </body>

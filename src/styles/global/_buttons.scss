@@ -53,3 +53,12 @@
     background-color: $secondaryColor;
   }
 }
+
+.btn-three {
+  @extend .btn;
+  background-color: $primaryColor;
+
+  &:hover {
+    background-color: $secondaryColor;
+  }
+}

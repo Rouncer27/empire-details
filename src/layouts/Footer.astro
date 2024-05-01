@@ -49,6 +49,11 @@ const {
     footerOptions: { footerOptions },
   },
 } = await response.json();
+
+const footerImage =
+  Astro.url.pathname === "/"
+    ? footerOptions.footerBottomImageHome
+    : footerOptions.footerBottomImageAbout;
 ---
 
 <footer class="footer">
@@ -101,8 +106,8 @@ const {
     </div>
     <div class="footer-bottom-image">
       <Image
-        src={footerOptions.footerBottomImageHome.sourceUrl}
-        alt={footerOptions.footerBottomImageHome.altText}
+        src={footerImage.sourceUrl}
+        alt={footerImage.altText}
         inferSize={true}
       />
     </div>

@@ -1,7 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import IntroHero from "../components/Contact/IntroHero.astro";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query contactPageQuery {
+				page(id: "/contact", idType: URI) {
+					contactPage {
+
+						# START Hero section #
+						heroIntroComponent {
+							mainQuote
+							mainTitle
+							heroImage {
+								altText
+								sourceUrl
+							}
+              heroGraphic {
+                altText
+								sourceUrl
+              }
+						}
+            # END Hero section #
+             
+					}
+				}
+			}
+		`,
+  }),
+});
+
+const {
+  data: { page },
+} = await response.json();
+
+console.log("page", page);
 ---
 
 <Layout>
-  <h1>Contact Page</h1>
+  <IntroHero data={page.contactPage.heroIntroComponent} />
 </Layout>

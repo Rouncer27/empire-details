@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import Button from "../components/shared/Button.astro";
+import "./header.scss";
+
+const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+        query headerQuery {
+            headerOptions {
+                headerOptions {
+                    callToActionButtonUrl
+                    callToActionButtonText
+                    mainLogo {
+                        altText
+                        sourceUrl
+                    }
+                }
+            }    
+        }
+    `,
+  }),
+});
+const {
+  data: {
+    headerOptions: { headerOptions },
+  },
+} = await response.json();
+console.log("data", headerOptions);
+---
+
+<header class="header">
+  <div class="header-wrapper">
+    <div class="header-logo">
+      <div class="header-logo-container">
+        <h1>
+          <a href="/">
+            <Image
+              src={headerOptions.mainLogo.sourceUrl}
+              alt={headerOptions.mainLogo.altText}
+              inferSize={true}
+            />
+            <span>Empre Details</span>
+          </a>
+        </h1>
+      </div>
+    </div>
+    <div class="header-cta">
+      <Button
+        btnstyle="three"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={headerOptions.callToActionButtonUrl}
+        >{headerOptions.callToActionButtonText}</Button
+      >
+    </div>
+  </div>
+</header>
