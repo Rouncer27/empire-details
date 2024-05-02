@@ -7,7 +7,7 @@ import { Image } from "astro:assets";
 ---
 
 <div class="levels">
-  <Wrapper>
+  <Wrapper classes="levels-wrapper">
     {
       Astro.props.data.levels.map((level, index) => {
         const reversed = (index + 1) % 2 === 0;

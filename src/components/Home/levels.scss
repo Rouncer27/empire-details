@@ -6,16 +6,43 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: column-reverse;
     width: 100%;
     margin-bottom: 5rem;
 
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
     &-content {
-      width: calc(50% - 2rem);
-      margin: 0 1rem;
+      width: calc(100%);
+      margin-top: 2.5rem;
+      margin-bottom: 5rem;
+
+      @media (min-width: 768px) {
+        width: calc(50% - 2rem);
+        margin: 0 1rem;
+      }
+
+      @media (min-width: 1025px) {
+        width: calc(50% - 2rem);
+      }
 
       &-title {
         h2 {
+          display: inline-block;
+          position: relative;
           color: $shadowColor;
+
+          &:after {
+            position: absolute;
+            bottom: 0rem;
+            display: block;
+            width: 100%;
+            height: 3rem;
+            background-color: rgba($shadowColor, 0.15);
+            content: "";
+          }
         }
 
         p {
@@ -40,16 +67,29 @@
     }
 
     &-image {
-      width: calc(50% - 2rem);
-      margin: 0 1rem;
+      width: calc(100%);
+
+      @media (min-width: 768px) {
+        width: calc(50% - 2rem);
+        margin: 0 1rem;
+      }
+
+      @media (min-width: 1025px) {
+      }
     }
 
     &-reversed {
-      flex-direction: row-reverse;
+      @media (min-width: 768px) {
+        flex-direction: row-reverse;
+      }
 
       .levels-item-content-title {
         h2 {
           color: $secondaryColor;
+
+          &:after {
+            background-color: rgba($secondaryColor, 0.15);
+          }
         }
       }
 

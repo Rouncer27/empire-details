@@ -191,12 +191,14 @@
       border-radius: 50%;
       background-color: $primaryColor;
       z-index: 1;
+
       @media (min-width: 768px) {
         top: 30rem;
         left: 70%;
         width: 17rem;
         height: 17rem;
       }
+
       @media (min-width: 1025px) {
         top: 5rem;
         left: 30%;
