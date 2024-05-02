@@ -1,8 +1,36 @@
 ---
 import "./testimonial.scss";
-console.log(Astro.props.data);
+import wavesSrc from "./assets/waves.png";
+import specsSrc from "./assets/specs.png";
+import Wrapper from "../shared/Wrapper.astro";
+import { Image } from "astro:assets";
 ---
 
-<div>
-  <h1>Testimonial</h1>
+<div class="testimonials">
+  <Wrapper>
+    {
+      Astro.props.data.images.map((image, index) => {
+        console.log(image);
+        return (
+          <div class={`testimonials-image testimonials-image-${index + 1}`}>
+            <div class="testimonials-image-wrapper">
+              <Image
+                src={image.image.sourceUrl}
+                alt={image.image.altText}
+                inferSize={true}
+              />
+            </div>
+          </div>
+        );
+      })
+    }
+    <div class="testimonials-quote" set:html={Astro.props.data.testimonial} />
+  </Wrapper>
+  <div class="testimonials-bg" style={`background-image: url(${wavesSrc.src})`}>
+    <div
+      class="testimonials-specs"
+      style={`background-image: url(${specsSrc.src})`}
+    >
+    </div>
+  </div>
 </div>
