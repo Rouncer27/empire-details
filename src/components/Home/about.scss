@@ -13,7 +13,13 @@
       margin: 2rem auto 0;
       padding: 7.5rem 2rem 20rem;
       position: relative;
+      text-align: center;
       z-index: 10;
+
+      @media (min-width: 768px) {
+      }
+      @media (min-width: 1025px) {
+      }
 
       p {
         @extend .hl-one;
@@ -54,18 +60,36 @@
       transparent 10rem,
       $secondaryColor 10rem
     );
-    margin-top: -22.5rem;
+    margin-top: -25rem;
     padding-bottom: 35rem;
     z-index: 10;
 
+    @media (min-width: 768px) {
+      margin-top: -22.5rem;
+    }
+
     &-image {
-      width: calc(35%);
+      width: calc(100%);
+      max-width: 25rem;
+
+      @media (min-width: 768px) {
+        width: calc(35%);
+        max-width: 100%;
+      }
+      @media (min-width: 1025px) {
+        width: calc(35%);
+      }
     }
 
     &-content {
-      width: calc(65% - 3rem);
-      margin-left: 3rem;
-      padding-top: 10rem;
+      width: calc(100%);
+      padding-top: 2.5rem;
+
+      @media (min-width: 768px) {
+        width: calc(65% - 3rem);
+        margin-left: 3rem;
+        padding-top: 10rem;
+      }
 
       &-title {
         width: 100%;
@@ -97,10 +121,19 @@
     z-index: 15;
     margin-top: -25rem;
 
+    @media (min-width: 768px) {
+      margin-top: -25rem;
+    }
+
     &-wrap {
       position: relative;
-      padding: 14rem 0 5rem;
+      padding: 17rem 0 0;
       z-index: 15;
+
+      @media (min-width: 768px) {
+        padding: 14rem 0 5rem;
+      }
+
       p {
         width: 100%;
         color: $primaryColor;
@@ -111,7 +144,7 @@
 
     &-specs {
       position: absolute;
-      top: -9rem;
+      top: -5rem;
       left: 0;
       right: 0;
       width: 100%;
@@ -121,6 +154,10 @@
       background-repeat: repeat-x;
       background-size: cover;
       z-index: 12;
+
+      @media (min-width: 768px) {
+        top: -9rem;
+      }
     }
   }
 }
