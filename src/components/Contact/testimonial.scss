@@ -5,15 +5,37 @@
   position: relative;
   margin-top: 7.5rem;
 
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1025px) {
+  }
+
   &-image {
     position: relative;
-    width: calc(37.325% - 1rem);
-    margin: 0 0.5rem;
-    padding: 10rem 0 4rem;
+    width: calc(100%);
+    padding: 1rem 0;
     z-index: 5;
 
+    @media (min-width: 768px) {
+      width: calc(37.325% - 1rem);
+      margin: 0 0.5rem;
+      padding: 10rem 0 4rem;
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(37.325% - 1rem);
+      margin: 0 0.5rem;
+      padding: 10rem 0 4rem;
+    }
+
     &.testimonials-image-2 {
-      width: calc(25.35% - 1rem);
+      @media (min-width: 768px) {
+        width: calc(25.35% - 1rem);
+      }
+
+      @media (min-width: 1025px) {
+        width: calc(25.35% - 1rem);
+      }
     }
   }
 
@@ -21,9 +43,17 @@
     position: relative;
     width: 100%;
     max-width: 114.2rem;
-    padding: 15rem 0 4rem;
+    padding: 2rem;
     text-align: center;
     z-index: 5;
+
+    @media (min-width: 768px) {
+      padding: 5rem 0 4rem;
+    }
+
+    @media (min-width: 1025px) {
+      padding: 15rem 0 4rem;
+    }
 
     p {
       @extend .hl-three;
@@ -40,13 +70,28 @@
     height: 75%;
     background-position: bottom center;
     background-repeat: repeat-x;
-    background-size: 100%;
+    background-size: cover;
     z-index: 1;
+
+    @media (min-width: 768px) {
+      top: -12.5%;
+      left: 0;
+      background-position: bottom center;
+      background-repeat: repeat-x;
+      background-size: 100%;
+    }
+    @media (min-width: 1025px) {
+      top: 0;
+      left: 0;
+      background-position: bottom center;
+      background-repeat: repeat-x;
+      background-size: 100%;
+    }
   }
 
   &-specs {
     position: absolute;
-    top: -1rem;
+    bottom: 70%;
     left: 0;
     right: 0;
     width: 100%;
@@ -55,5 +100,11 @@
     background-repeat: repeat-x;
     background-size: cover;
     z-index: 3;
+    @media (min-width: 768px) {
+      bottom: 70%;
+    }
+    @media (min-width: 1025px) {
+      bottom: 70%;
+    }
   }
 }

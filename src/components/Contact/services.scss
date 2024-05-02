@@ -3,8 +3,17 @@
 
 .services {
   &-item {
-    width: calc(50% - 6rem);
-    margin: 1rem 3rem;
+    width: calc(100%);
+    margin-bottom: 5rem;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 6rem);
+      margin: 1rem 3rem;
+    }
+    @media (min-width: 1025px) {
+      width: calc(50% - 6rem);
+      margin: 1rem 3rem;
+    }
 
     &-graphic {
       width: 16rem;
