@@ -7,30 +7,38 @@ import { Image } from "astro:assets";
 ---
 
 <div class="testimonials">
-  <Wrapper>
-    {
-      Astro.props.data.images.map((image, index) => {
-        console.log(image);
-        return (
-          <div class={`testimonials-image testimonials-image-${index + 1}`}>
-            <div class="testimonials-image-wrapper">
-              <Image
-                src={image.image.sourceUrl}
-                alt={image.image.altText}
-                inferSize={true}
-              />
+  <div class="testimonials-top">
+    <Wrapper>
+      {
+        Astro.props.data.images.map((image, index) => {
+          console.log(image);
+          return (
+            <div class={`testimonials-image testimonials-image-${index + 1}`}>
+              <div class="testimonials-image-wrapper">
+                <Image
+                  src={image.image.sourceUrl}
+                  alt={image.image.altText}
+                  inferSize={true}
+                />
+              </div>
             </div>
-          </div>
-        );
-      })
-    }
-    <div class="testimonials-quote" set:html={Astro.props.data.testimonial} />
-  </Wrapper>
-  <div class="testimonials-bg" style={`background-image: url(${wavesSrc.src})`}>
+          );
+        })
+      }
+    </Wrapper>
     <div
-      class="testimonials-specs"
-      style={`background-image: url(${specsSrc.src})`}
+      class="testimonials-bg"
+      style={`background-image: url(${wavesSrc.src})`}
     >
+      <div
+        class="testimonials-specs"
+        style={`background-image: url(${specsSrc.src})`}
+      >
+      </div>
     </div>
   </div>
+
+  <Wrapper>
+    <div class="testimonials-quote" set:html={Astro.props.data.testimonial} />
+  </Wrapper>
 </div>
