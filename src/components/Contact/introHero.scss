@@ -184,8 +184,8 @@
 
     &-dot-two {
       position: absolute;
-      top: 30rem;
-      left: 70%;
+      bottom: 40rem;
+      right: 70%;
       width: 15rem;
       height: 15rem;
       border-radius: 50%;
@@ -193,15 +193,15 @@
       z-index: 1;
 
       @media (min-width: 768px) {
-        top: 30rem;
-        left: 70%;
+        bottom: 40rem;
+        right: 70%;
         width: 17rem;
         height: 17rem;
       }
 
       @media (min-width: 1025px) {
-        top: 5rem;
-        left: 30%;
+        bottom: 40rem;
+        right: 5%;
         width: 23rem;
         height: 23rem;
       }
@@ -209,8 +209,8 @@
 
     &-dot-three {
       position: absolute;
-      top: 50%;
-      left: -3rem;
+      top: 30%;
+      left: 5rem;
       width: 15rem;
       height: 15rem;
       border-radius: 50%;
