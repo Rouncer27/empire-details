@@ -77,7 +77,7 @@
         max-width: 45rem;
         margin-left: auto;
         margin-right: 10rem;
-        padding: 6rem 1rem;
+        padding: 3rem 1rem;
       }
 
       &-title {
@@ -121,9 +121,64 @@
         width: 100%;
         margin-top: 2.5rem;
 
-        li {
+        &-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 6rem;
+          height: 6rem;
+          margin-right: 1rem;
+          margin-left: 1rem;
+          border-radius: 50%;
+          overflow: hidden;
+
           a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: $whiteColor;
+            width: 6rem;
+            height: 6rem;
+            transition: all 0.3s ease-out;
+            background-color: $accentColor;
+
+            &:hover {
+              background-color: $secondaryColor;
+            }
+
+            .social-svg {
+              display: block;
+              width: 3.5rem;
+              height: 3.5rem;
+            }
+
+            .visually-hidden {
+              clip: rect(0 0 0 0);
+              clip-path: inset(50%);
+              height: 1px;
+              overflow: hidden;
+              position: absolute;
+              white-space: nowrap;
+              width: 1px;
+            }
+          }
+
+          &.social-icon-facebook {
+            .social-svg {
+              svg {
+                path {
+                  fill: #fff;
+                }
+              }
+            }
+          }
+
+          &.social-icon-instagram {
+            svg {
+              path {
+                fill: #fff;
+              }
+            }
           }
         }
       }
