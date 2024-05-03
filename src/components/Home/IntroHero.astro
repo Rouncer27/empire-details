@@ -35,3 +35,67 @@ import "./introHero.scss";
     <div class="intro-hero-bg-dot-three"></div>
   </div>
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const container = document.querySelector(".intro-hero");
+  const dotOne = document.querySelector(".intro-hero-bg-dot-one");
+  const dotTwo = document.querySelector(".intro-hero-bg-dot-two");
+  const dotThree = document.querySelector(".intro-hero-bg-dot-three");
+
+  if (container && dotOne && dotTwo && dotThree) {
+    const tl = gsap.timeline();
+
+    tl.add("start")
+      .to(
+        dotOne,
+        {
+          x: 50,
+          y: 150,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: "+=1000",
+            markers: false,
+            scrub: 5,
+          },
+        },
+        "start",
+      )
+      .to(
+        dotTwo,
+        {
+          x: -200,
+          y: 350,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: "+=1000",
+            markers: false,
+            scrub: 5,
+          },
+        },
+        "start",
+      )
+      .to(
+        dotThree,
+        {
+          x: 250,
+          y: -150,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: "+=1000",
+            markers: false,
+            scrub: 5,
+          },
+        },
+        "start",
+      );
+  }
+</script>
