@@ -64,3 +64,33 @@ import Button from "../shared/Button.astro";
     }
   </Wrapper>
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const trigger = document.querySelector(".services");
+  const services = document.querySelectorAll(".services-item");
+
+  if (trigger && services) {
+    gsap.fromTo(
+      services,
+      { autoAlpha: 0, y: 200 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        ease: "power4.out",
+        duration: 2,
+        stagger: {
+          each: 0.5,
+        },
+        scrollTrigger: {
+          start: "top 30%",
+          markers: false,
+          trigger: trigger,
+        },
+      },
+    );
+  }
+</script>
