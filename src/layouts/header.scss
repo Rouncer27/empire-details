@@ -13,7 +13,23 @@
   }
 
   &-logo {
-    width: 30.3rem;
+    width: 14rem;
+
+    @media (min-width: 362px) {
+      width: 16rem;
+    }
+
+    @media (min-width: 402px) {
+      width: 20rem;
+    }
+
+    @media (min-width: 452px) {
+      width: 25rem;
+    }
+
+    @media (min-width: 500px) {
+      width: 30.3rem;
+    }
 
     h1 {
       margin: 0;
@@ -27,7 +43,11 @@
 
   &-cta {
     padding-top: 4.5rem;
-    padding-right: 11.4rem;
+    padding-right: 1rem;
+
+    @media (min-width: 768px) {
+      padding-right: 11.4rem;
+    }
 
     a {
       padding: 1.2rem 6rem;
