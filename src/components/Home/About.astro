@@ -59,3 +59,59 @@ const { aboutQuote, aboutImage, aboutTitle, aboutContent, aboutEndQuote } =
     </div>
   </div>
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const trigger = document.querySelector(".about");
+  const title = document.querySelector(".about-bio-content-title");
+  const content = document.querySelector(".about-bio-content-para");
+  const image = document.querySelector(".about-bio-image");
+
+  if (trigger && title && content && image) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top 0%",
+        markers: true,
+        trigger: trigger,
+      },
+    });
+
+    tl.add("start")
+      .fromTo(
+        title,
+        { autoAlpha: 0, y: 200 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          ease: "power4.out",
+          duration: 2,
+        },
+        "start",
+      )
+      .fromTo(
+        content,
+        { autoAlpha: 0, y: 200 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          ease: "power4.out",
+          duration: 2,
+        },
+        "start+=1",
+      )
+      .fromTo(
+        image,
+        { autoAlpha: 0, x: -200 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          ease: "power4.out",
+          duration: 2,
+        },
+        "start+=1",
+      );
+  }
+</script>
