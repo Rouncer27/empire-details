@@ -47,3 +47,46 @@ import { Image } from "astro:assets";
     }
   </Wrapper>
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const trigger = document.querySelector(".levels");
+  const items = document.querySelectorAll(".levels-item");
+
+  if (trigger && items) {
+    items.forEach((item, index) => {
+      const reversed = item.classList.contains("levels-item-reversed");
+      const image = item.querySelector(".levels-item-image");
+      const content = item.querySelector(".levels-item-content");
+
+      gsap.fromTo(
+        image,
+        { autoAlpha: 0, x: reversed ? -200 : 200 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          scrollTrigger: {
+            start: "top 50%",
+            markers: false,
+            trigger: item,
+          },
+        },
+      );
+      gsap.fromTo(
+        content,
+        { autoAlpha: 0, x: reversed ? 200 : -200 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          scrollTrigger: {
+            start: "top 50%",
+            markers: false,
+            trigger: item,
+          },
+        },
+      );
+    });
+  }
+</script>
