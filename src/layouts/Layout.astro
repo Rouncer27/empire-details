@@ -20,11 +20,16 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="HandheldFriendly" content="true" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="image" content={imgSrc} />
+    <link rel="canonical" href={baseUrl} />
   </head>
   <body>
     <Header />
