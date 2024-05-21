@@ -12,6 +12,7 @@ import "./introHero.scss";
         <Image
           src={Astro.props.data.heroImage.sourceUrl}
           alt={Astro.props.data.heroImage.altText}
+          loading="eager"
           inferSize={true}
         />
       </div>
