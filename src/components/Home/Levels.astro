@@ -11,6 +11,8 @@ import { Image } from "astro:assets";
     {
       Astro.props.data.levels.map((level, index) => {
         const reversed = (index + 1) % 2 === 0;
+        const buttonType = level.buttonType;
+        console.log("buttonType", buttonType);
         return (
           <div class={`levels-item${reversed ? " levels-item-reversed" : ""}`}>
             <div class="levels-item-content">
@@ -26,10 +28,23 @@ import { Image } from "astro:assets";
                 class="levels-item-content-paragraphs"
                 set:html={level.levelContent}
               />
+
               <div class="levels-item-content-link">
-                <Button href={level.levelButtonLink.uri}>
-                  {level.levelButtonText}
-                </Button>
+                {buttonType === "page" ? (
+                  <Button href={level.levelButtonLink.uri}>
+                    {level.levelButtonText}
+                  </Button>
+                ) : buttonType === "email" ? (
+                  <Button
+                    href={`mailto: ${level.levelButtonEmail}?subject=Get a quote on - ${level.levelsTitle}`}
+                  >
+                    {level.levelButtonText}
+                  </Button>
+                ) : buttonType === "url" ? (
+                  <Button href={`${level.levelButtonUrl}`}>
+                    {level.levelButtonText}
+                  </Button>
+                ) : null}
               </div>
             </div>
             <div class="levels-item-image">
