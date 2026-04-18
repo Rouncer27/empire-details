@@ -44,7 +44,9 @@ import { Image } from "astro:assets";
                   <Button href={`${level.levelButtonUrl}`}>
                     {level.levelButtonText}
                   </Button>
-                ) : null}
+                ) : (
+                  <Button href={`/contact`}>{level.levelButtonText}</Button>
+                )}
               </div>
             </div>
             <div class="levels-item-image">
